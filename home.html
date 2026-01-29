@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Royal Bank Of Canada | Login</title>
+  <style>
+    :root {
+      --primary: #0b1c2d;
+      --accent: #1fa2ff;
+      --muted: #7d8fa3;
+      --bg: #f4f7fb;
+      --card: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #0b1c2d, #102a43);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-card {
+      width: 420px;
+      background: var(--card);
+      border-radius: 14px;
+      padding: 40px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin-bottom: 32px;
+      font-size: 14px;
+    }
+
+    label {
+      font-size: 13px;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #dbe3ec;
+      margin-bottom: 18px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--accent);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #1fa2ff, #007adf);
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.95;
+    }
+
+    .error {
+      color: #d64545;
+      font-size: 13px;
+      margin-top: 14px;
+      display: none;
+    }
+
+    .footer {
+      margin-top: 26px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <div class="brand">Royal Bank Of Canada</div>
+    <div class="subtitle">Enterprise Online Banking Portal</div>
+
+    <label>Email Address</label>
+    <input type="email" id="email" placeholder="name@company.com" />
+
+    <label>Password</label>
+    <input type="password" id="password" placeholder="••••••••" />
+
+    <button onclick="login()">Sign In</button>
+
+    <div class="error" id="error">Invalid email or password</div>
+
+    <div class="footer">Protected by Royal Bank Of Canada Authentication Services</div>
+  </div>
+
+  <script>
+    // ===== SET YOUR CREDENTIALS HERE =====
+    const USER = {
+  email: "lameedonald@gmail.com",
+  password: "secure@123",
+  name: "Joseph Daniel Votto"
+};
+
+
+    function login() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const error = document.getElementById("error");
+
+  if (email === USER.email && password === USER.password) {
+    sessionStorage.setItem("authenticated", "true");
+    sessionStorage.setItem("userName", USER.name);
+    window.location.href = "dashboard.html";
+  } else {
+    error.style.display = "block";
+  }
+}
+
+  </script>
+</body>
+</html>
+
+
